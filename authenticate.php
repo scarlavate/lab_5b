@@ -23,6 +23,7 @@ if (isset($_POST['submit']) && ($_SERVER['REQUEST_METHOD'] == 'POST')) {
         if ($userData && password_verify($password, $userData['password'])) {
             //echo 'Login Successful';
             $_SESSION['name'] = $userData['name'];
+            setcookie("name", $userData['name'], time()+3600);
             header('Location:read.php');
         } else {
             echo "<script>
